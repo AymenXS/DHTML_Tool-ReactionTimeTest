@@ -27,6 +27,15 @@ function getRandomTime(min, max) {
   return result;
 }
 
+function startGame() {
+  let changeTime = getRandomTime(1, 8);
+  let endTime = changeTime + 5000;
+  status = gameStatus.START;
+  canvas.style.background = "rgb(206,63,63)";
+  timeoutFunction1(changeTime);
+  timeoutFunction2(endTime);
+}
+
 function endGame() {
   clearTimeout(timeout1);
   clearTimeout(timeout2);
@@ -53,15 +62,6 @@ function timeoutFunction2(time) {
   timeout2 = setTimeout(function () {
     endGame();
   }, time);
-}
-
-function startGame() {
-  let changeTime = getRandomTime(1, 8);
-  let endTime = changeTime + 5000;
-  status = gameStatus.START;
-  canvas.style.background = "rgb(206,63,63)";
-  timeoutFunction1(changeTime);
-  timeoutFunction2(endTime);
 }
 
 start.addEventListener("click", function () {
