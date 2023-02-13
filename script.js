@@ -22,7 +22,7 @@ let gameStatus = {
 let status = gameStatus.STOP;
 
 function getRandomTime(min, max) {
-  let result = Math.floor(Math.random() * Math.floor(max)) + min;
+  let result = Math.floor(Math.random() * max) + min;
   result = result * 1000;
   return result;
 }
@@ -34,14 +34,6 @@ function startGame() {
   canvas.style.background = "rgb(206,63,63)";
   timeoutFunction1(changeTime);
   timeoutFunction2(endTime);
-}
-
-function endGame() {
-  clearTimeout(timeout1);
-  clearTimeout(timeout2);
-  canvas.style.background = "rgb(237,255,172)";
-  start.innerHTML = "Start Game";
-  status = gameStatus.STOP;
 }
 
 function timeoutFunction1(time) {
@@ -62,6 +54,14 @@ function timeoutFunction2(time) {
   timeout2 = setTimeout(function () {
     endGame();
   }, time);
+}
+
+function endGame() {
+  clearTimeout(timeout1);
+  clearTimeout(timeout2);
+  canvas.style.background = "rgb(237,255,172)";
+  start.innerHTML = "Start Game";
+  status = gameStatus.STOP;
 }
 
 start.addEventListener("click", function () {
